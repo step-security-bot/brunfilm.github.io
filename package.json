@@ -1,0 +1,31 @@
+{
+	"name": "homepage",
+	"version": "0.0.1",
+	"description": "homepage for brunfilm",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"docs:dev": "vuepress dev docs",
+		"docs:build": "vuepress build docs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Brunfilm/homepage.git"
+	},
+	"keywords": [
+		"brunfilm"
+	],
+	"author": "Brunfilm",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Brunfilm/homepage/issues"
+	},
+	"homepage": "https://github.com/Brunfilm/homepage#readme",
+	"peerDependencies": {
+		"@vuepress/client": "2.0.0-rc.0",
+		"vue": "^3.3.9"
+	},
+	"devDependencies": {
+		"vuepress": "2.0.0-rc.0"
+	}
+}

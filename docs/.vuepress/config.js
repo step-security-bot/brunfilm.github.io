@@ -1,3 +1,4 @@
+import { searchPlugin } from "@vuepress/plugin-search";
 import { defaultTheme, defineUserConfig } from "vuepress";
 
 export default defineUserConfig({
@@ -29,4 +30,10 @@ export default defineUserConfig({
 			// }
 		],
 	}),
+
+	plugins: [
+		searchPlugin({
+			isSearchable: (page) => page.path !== '/',
+		}),
+	],
 });

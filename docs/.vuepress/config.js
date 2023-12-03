@@ -4,7 +4,7 @@ import { defaultTheme, defineUserConfig } from "vuepress";
 export default defineUserConfig({
 	lang: "sv-SE",
 	title: "Brunfilm",
-	description: "brunfilms hemsida",
+	description: "Hemsida",
 
 	theme: defaultTheme({
 		// default theme config

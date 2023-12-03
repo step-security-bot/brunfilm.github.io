@@ -9,10 +9,11 @@ export default defineUserConfig({
 	theme: defaultTheme({
 		// default theme config
 		logo: "/images/BrunfilmLogo.jpg",
-		logoDark: "/images/BrunfilmLogo.jpg",
 		sidebar: false,
 		lastUpdated: false,
 		contributors: false,
+		colorMode: "dark",
+		colorModeSwitch: false,
 		navbar: [
 			// NavbarItem
 			{
@@ -33,7 +34,7 @@ export default defineUserConfig({
 
 	plugins: [
 		searchPlugin({
-			isSearchable: (page) => page.path !== '/',
+			isSearchable: (page) => page.path !== "/",
 		}),
 	],
 });

@@ -13,6 +13,12 @@ dependencies:
     version: 3.3.9
 
 devDependencies:
+  '@vuepress/plugin-active-header-links':
+    specifier: 2.0.0-rc.0
+    version: 2.0.0-rc.0
+  '@vuepress/plugin-back-to-top':
+    specifier: 2.0.0-rc.0
+    version: 2.0.0-rc.0
   '@vuepress/plugin-search':
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0

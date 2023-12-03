@@ -26,6 +26,8 @@
 		"vue": "^3.3.9"
 	},
 	"devDependencies": {
+		"@vuepress/plugin-active-header-links": "2.0.0-rc.0",
+		"@vuepress/plugin-back-to-top": "2.0.0-rc.0",
 		"@vuepress/plugin-search": "2.0.0-rc.0",
 		"vuepress": "2.0.0-rc.0"
 	}

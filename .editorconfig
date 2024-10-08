@@ -41,3 +41,46 @@ switch_case_indent = true
 space_redirects    = true
 keep_padding       = true
 function_next_line = true
+
+# Glob tester: https://toools.cloud/miscellaneous/glob-tester
+# Test files:
+# /script/shell/test.sh
+# /script/powershell/test.pssc
+# /script/powershell/test.psrc
+# /script/powershell/test.psm1
+# /script/powershell/test.psd1
+# /script/powershell/test.psc1
+# /script/powershell/test.ps1xml
+# /script/powershell/test.ps1
+# /script/powershell/test.cdxml
+# /script/bat/test.BAT
+# /script/bat/test.BAt
+# /script/bat/test.Bat
+# /script/bat/test.bAT
+# /script/bat/test.baT
+# /script/bat/test.bat
+# /script/bash/test.bashrc
+# /script/bash/test.bash
+# /markup/yaml/test.yml
+# /markup/yaml/test.yaml
+# /build/make/test.mk
+# /build/make/test.mak
+# /build/make/Makefile.test
+# /build/make/makefile.test
+# /build/make/Makefile
+# /build/make/makefile
+# /build/make/GNUmakefile
+# /!random/test.tsx
+# /!random/test.ts
+# /!random/test.svg
+# /!random/test.scss
+# /!random/test.png
+# /!random/test.md
+# /!random/test.json
+# /!random/test.js
+# /!random/test.jpg
+# /!random/test.ico
+# /!random/test.html
+# /!random/test.css
+# /!random/test.
+# /!random/.gitignore

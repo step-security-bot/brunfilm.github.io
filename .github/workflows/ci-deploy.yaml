@@ -1,25 +1,23 @@
-name: Continuous Integration
+name: CI Deploy
 
 on:
   push:
-    branches: "*"
+    branches: "main"
 
   pull_request:
     branches:
-      - "*"
-
+      - "main"
   workflow_dispatch:
 
-  workflow_call:
-    secrets:
-      SONAR_TOKEN:
-        required: true
-      SONAR_HOST_URL:
-        required: true
-
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: GitHubPages
   cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  deployments: write
 
 jobs:
   build:
@@ -74,23 +72,28 @@ jobs:
         uses: sonarsource/sonarqube-quality-gate-action@master
         timeout-minutes: 5
         with:
-          scanMetadataReportFile: target/sonar/report-task.txt # TODO: Verify that this is the correct file path
+          scanMetadataReportFile: target/sonar/report-task.txt
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  deploy:
+    name: Deploy to GitHub Pages
+    env:
+      ArtifactPath: site/.vitepress/dist
+    environment:
+      name: Production
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    steps:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        if: ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status == 'PASSED' &&
-          github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         with:
-          path: docs/.vitepress/dist
+          path: $ArtifactPath
 
-  call-deploy:
-    if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-    uses: "./.github/workflows/deploy.yaml"
-    secrets: inherit
-    with:
-      artifact-path: docs/.vitepress/dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

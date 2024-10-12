@@ -4,15 +4,22 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vitepress dev docs",
-        "build": "vitepress build docs",
-        "preview": "vitepress preview docs",
+        "site:dev": "vitepress dev site",
+        "site:build": "vitepress build site",
+        "site:preview": "vitepress preview site",
         "test": "exit 0",
         "sonar:scanner": "sonar-scanner -D sonar.token='$Env:SONAR_TOKEN' -D project.settings='./sonar-project.properties'",
-        "lint": "run-s eslint",
-        "lint:fix": "run-s eslint:fix",
-        "eslint": "eslint --ext .js,.vue src",
-        "eslint:fix": "eslint --ext .js,.vue src --fix"
+        "lint": "run-s eslint prettier",
+        "lint:fix": "run-s eslint:fix prettier:fix",
+        "eslint": "npx eslint ./site ",
+        "eslint:fix": "npx eslint ./site --fix",
+        "prettier": "prettier ./site ",
+        "prettier:fix": "prettier ./site  --write"
+    },
+    "dependencies": {
+        "@vue/devtools-api": "^7.4.6",
+        "vite": "5.4.8",
+        "vue": "^3.5.12"
     },
     "devDependencies": {
         "@eslint/js": "^9.12.0",
@@ -23,9 +30,9 @@
         "eslint-plugin-vue": "^9.29.0",
         "globals": "^15.11.0",
         "jsdoc": "^4.0.3",
+        "npm-run-all2": "^6.2.3",
         "prettier": "^3.3.3",
         "sonarqube-scanner": "^4.2.3",
-        "vite": "5.4.8",
         "vitepress": "1.4.0"
     }
 }

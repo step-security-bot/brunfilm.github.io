@@ -1,8 +1,13 @@
 {
     "folders": [
         {
-            "path": "."
-        }
+            "path": ".",
+        },
     ],
-    "settings": {}
+    "settings": {
+        "sonarlint.connectedMode.project": {
+            "connectionId": "brunfilm",
+            "projectKey": "Brunfilm_brunfilm.github.io",
+        },
+    },
 }

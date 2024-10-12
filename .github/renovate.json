@@ -1,0 +1,45 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended",
+        ":approveMajorUpdates",
+        ":semanticCommitScopeDisabled"
+    ],
+    "ignorePresets": [
+        ":semanticPrefixFixDepsChoreOthers"
+    ],
+    "labels": [
+        "dependencies"
+    ],
+    "minimumReleaseAge": "7 days",
+    "packageRules": [
+        {
+            "addLabels": [
+                "deps:actions"
+            ],
+            "description": "Use the deps:actions label for github-action manager updates (this means Renovate's github-action manager).",
+            "matchManagers": [
+                "github-actions"
+            ]
+        },
+        {
+            "addLabels": [
+                "deps:npm"
+            ],
+            "description": "Use the deps:npm label for npm manager packages (this means Renovate's npm manager).",
+            "matchManagers": [
+                "npm"
+            ]
+        },
+        {
+            "description": "Group metascraper packages into a single PR.",
+            "groupName": "metascraper",
+            "matchPackagePrefixes": [
+                "metascraper"
+            ]
+        }
+    ],
+    "schedule": [
+        "0 17 * * MON"
+    ]
+}

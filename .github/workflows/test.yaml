@@ -1,0 +1,45 @@
+name: Testing workflow
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v3.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Run Tests
+        run: npm test
+      # - name: Test and coverage
+      #   run: npm jest --coverage ./tests/coverage/lcov.info
+      - name: SonarQube Quality Gate check
+        id: sonarqube-quality-gate-check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        with:
+          scanMetadataReportFile: target/sonar/report-task.txt # TODO: Verify that this is the correct file path
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        if:
+          ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status == 'PASSED' &&
+          github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        with:
+          name: homepage
+          path: docs/.vitepress/dist

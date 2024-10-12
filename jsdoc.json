@@ -1,0 +1,11 @@
+{
+    "$schema": "https://json.schemastore.org/jsdoc-1.0.0.json",
+    "source": {
+        "include": ["lib", "README.md"]
+    },
+    "opts": {
+        "destination": "jsdoc",
+        "encoding": "utf8",
+        "recurse": true
+    }
+}

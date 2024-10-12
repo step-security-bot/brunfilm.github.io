@@ -4,7 +4,7 @@ Here's a list of our groundbreaking (literally, we film in caves) movies:
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { data as movies } from './movies.data.js'
+import { data as movies } from './data/movies.data.js'
 // const movies = ref([])
 </script>
 

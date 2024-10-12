@@ -41,7 +41,7 @@ jobs:
         run: npm ci
 
       - name: Build with VitePress
-        run: npm run build
+        run: npm run site:build
 
   test:
     name: Testing

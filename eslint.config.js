@@ -21,7 +21,7 @@ export default [
         language: "markdown/gfm",
     },
     {
-        files: ["**/*.json"],
+        files: ["**/*.json", "*.code-workspace"],
         plugins: {
             json,
         },
@@ -31,11 +31,17 @@ export default [
     },
     {
         files: ["**/*.jsonc", ".vscode/*.json"],
+        plugins: {
+            json,
+        },
         language: "json/jsonc",
         ...json.configs.recommended,
     },
     {
         files: ["**/*.json5"],
+        plugins: {
+            json,
+        },
         language: "json/json5",
         rules: {
             "json/no-duplicate-keys": "error",

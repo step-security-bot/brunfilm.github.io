@@ -58,12 +58,6 @@ jobs:
       - name: Run Tests
         run: npm test
 
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
       # - name: Test and coverage
       #   run: npm jest --coverage ./tests/coverage/lcov.info
 

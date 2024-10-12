@@ -56,7 +56,7 @@ export default [
     },
     {
         files: ["**/*.js"],
-        rules: js.configs.recommended.rules,
+        rules: pluginJs.configs.recommended.rules,
     },
     eslintPluginPrettierRecommended,
 ];

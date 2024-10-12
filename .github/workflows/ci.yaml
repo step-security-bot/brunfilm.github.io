@@ -86,11 +86,11 @@ jobs:
         if: ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status == 'PASSED' &&
           github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         with:
-          path: docs/.vitepress/dist
+          path: site/.vitepress/dist
 
   call-deploy:
     if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-    uses: "./.github/workflows/deploy.yaml"
+    uses: ./.github/workflows/deploy.yaml
     secrets: inherit
     with:
-      artifact-path: docs/.vitepress/dist
+      artifact-path: site/.vitepress/dist

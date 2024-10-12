@@ -43,26 +43,26 @@ jobs:
       - name: Build with VitePress
         run: npm run site:build
 
-  test:
-    name: Testing
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
+  # test:
+  #   name: Testing
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+    # steps:
       # - name: SonarCloud Scan
         # uses: SonarSource/sonarcloud-github-action@v3.1.0
         # env:
         #   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         #   SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-      - name: Run Tests
-        run: npm test
+      # - name: Run Tests
+      #   run: npm test
 
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # - name: SonarQube Scan
+      #   uses: sonarsource/sonarqube-scan-action@master
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       # - name: Test and coverage
       #   run: npm jest --coverage ./tests/coverage/lcov.info

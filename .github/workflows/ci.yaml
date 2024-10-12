@@ -18,7 +18,7 @@ on:
         required: true
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: GitHubPages
   cancel-in-progress: true
 
 jobs:
@@ -78,19 +78,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        if: ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status == 'PASSED' &&
-          github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-        with:
-          path: site/.vitepress/dist
-
   call-deploy:
     if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     uses: ./.github/workflows/deploy.yaml
     secrets: inherit
-    with:
-      artifact-path: site/.vitepress/dist

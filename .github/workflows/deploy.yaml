@@ -1,44 +1,44 @@
-name: Deploying workflow
+# name: Deploying workflow
 
-on:
-  workflow_dispatch:
+# on:
+#   workflow_dispatch:
 
-  workflow_call:
+#   workflow_call:
 
-concurrency:
-  group: GitHubPages
-  cancel-in-progress: true
+# concurrency:
+#   group: GitHubPages
+#   cancel-in-progress: true
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
 
-jobs:
-  deploy:
-    name: Deploy to GitHub Pages
+# jobs:
+#   deploy:
+#     name: Deploy to GitHub Pages
 
-    env:
-      ArtifactPath: site/.vitepress/dist
+#     env:
+#       ArtifactPath: site/.vitepress/dist
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
-    if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-    permissions:
-      contents: read
-      deployments: write
-    steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+#     runs-on: ubuntu-latest
+#     if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+#     permissions:
+#       contents: read
+#       deployments: write
+#     steps:
+#       - name: Setup Pages
+#         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: $ArtifactPath
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: $ArtifactPath
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4

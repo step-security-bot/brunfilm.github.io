@@ -4,14 +4,19 @@ Here's a list of our groundbreaking (literally, we film in caves) movies:
 
 <script setup>
 import { ref, onMounted } from 'vue'
-
-const movies = ref([])
-
-onMounted(async () => {
-  const response = await fetch('/data/movies.json')
-  movies.value = await response.json()
-})
+import { data as movies } from './movies.data.js'
+// const movies = ref([])
 </script>
+
+<template>
+  <h1>All Blog Posts</h1>
+  <ul>
+    <li v-for="post of posts">
+      <a :href="post.url">{{ post.frontmatter.title }}</a>
+      <span>by {{ post.frontmatter.author }}</span>
+    </li>
+  </ul>
+</template>
 
 <div v-for="movie in movies" :key="movie.title">
   <h2>{{ movie.title }} ({{ movie.year }})</h2>

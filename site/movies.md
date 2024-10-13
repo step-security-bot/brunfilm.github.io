@@ -8,7 +8,7 @@ import { data as movies } from './data/movies.data.js'
 // const movies = ref([])
 </script>
 
-<template>
+{# <template>
   <h1>All Blog Posts</h1>
   <ul>
     <li v-for="movie of movies">
@@ -16,12 +16,12 @@ import { data as movies } from './data/movies.data.js'
       <span>by {{ movie.frontmatter.author }}</span>
     </li>
   </ul>
-</template>
+</template> #}
 
-{# <div v-for="movie in movies" :key="movie.title">
+<div v-for="movie in movies" :key="movie.title">
   <h2>{{ movie.title }} ({{ movie.year }})</h2>
   <p>{{ movie.description }}</p>
-</div> #}
+</div>
 
 <style>
 .movie-list {

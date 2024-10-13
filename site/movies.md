@@ -11,17 +11,17 @@ import { data as movies } from './data/movies.data.js'
 <template>
   <h1>All Blog Posts</h1>
   <ul>
-    <li v-for="post of posts">
-      <a :href="post.url">{{ post.frontmatter.title }}</a>
-      <span>by {{ post.frontmatter.author }}</span>
+    <li v-for="movie of movies">
+      <a :href="movie.url">{{ movie.frontmatter.title }}</a>
+      <span>by {{ movie.frontmatter.author }}</span>
     </li>
   </ul>
 </template>
 
-<div v-for="movie in movies" :key="movie.title">
+{# <div v-for="movie in movies" :key="movie.title">
   <h2>{{ movie.title }} ({{ movie.year }})</h2>
   <p>{{ movie.description }}</p>
-</div>
+</div> #}
 
 <style>
 .movie-list {

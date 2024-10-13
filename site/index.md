@@ -11,6 +11,9 @@ hero:
     - theme: alt
       text: About Us
       link: /about
+    - theme: alt
+      text: Dev
+      link: /dev
 features:
   - title: 🎬 Unconventional Storytelling
     details: Our plots are so twisted, pretzels get jealous.

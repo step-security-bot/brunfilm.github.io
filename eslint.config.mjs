@@ -7,12 +7,13 @@ import globals from "globals";
 
 export default [
     js.configs.recommended,
+    ...markdown.configs.recommended,
     {
         files: ["**/*.md"],
         plugins: {
             markdown,
         },
-        processor: "markdown/markdown",
+        language: "markdown/gfm",
     },
     {
         files: ["**/*.{js,mjs,cjs,vue}"],

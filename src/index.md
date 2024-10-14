@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: See Our Movies
-      link: /movies
+      link: /movies/
     - theme: alt
       text: About Us
       link: /about

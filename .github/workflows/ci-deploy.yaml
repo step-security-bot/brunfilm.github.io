@@ -46,7 +46,7 @@ jobs:
         run: npm ci
 
       - name: Build with VitePress
-        run: npm run site:build
+        run: npm run build
 
   test:
     name: Testing
@@ -54,12 +54,6 @@ jobs:
     permissions:
       contents: read
     steps:
-      # - name: SonarCloud Scan
-        # uses: SonarSource/sonarcloud-github-action@v3.1.0
-        # env:
-        #   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #   SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
       # - name: Run Tests
       #   run: npm test
 
@@ -77,28 +71,13 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      # - name: SonarQube Scan
-      #   uses: sonarsource/sonarqube-scan-action@master
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
       # - name: Test and coverage
       #   run: npm jest --coverage ./tests/coverage/lcov.info
-
-      # - name: SonarQube Quality Gate check
-      #   id: sonarqube-quality-gate-check
-      #   uses: sonarsource/sonarqube-quality-gate-action@master
-      #   timeout-minutes: 5
-      #   with:
-      #     scanMetadataReportFile: target/sonar/report-task.txt
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
     name: Deploy to GitHub Pages
     env:
-      ArtifactPath: site/.vitepress/dist
+      ArtifactPath: .vitepress/dist
     environment:
       name: Production
       url: ${{ steps.deployment.outputs.page_url }}

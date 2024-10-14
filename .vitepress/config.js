@@ -1,9 +1,11 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-    title: "Brunfilm",
+    title: " ",
     lang: "sv-SE",
     description: "En sida dedikerad till sagan om Brunfilm.",
+    srcDir: "./src",
+    head: [["link", { rel: "icon", href: "/favicon.ico" }]],
     markdown: {
         image: {
             lazyLoading: true, // image lazy loading is disabled by default
@@ -13,6 +15,6 @@ export default defineConfig({
         hostname: "https://www.brunfilm.com",
     },
     themeConfig: {
-        logo: "/javascript.svg",
+        logo: "/logo.svg",
     },
 });

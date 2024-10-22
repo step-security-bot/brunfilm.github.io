@@ -1,7 +1,7 @@
 {
     "name": "brunfilm",
     "private": true,
-    "version": "1.0.0",
+    "version": "0.0.1",
     "type": "module",
     "scripts": {
         "dev": "vitepress dev --port=4000",
@@ -11,23 +11,23 @@
         "lint:fix": "run-s eslint:fix prettier:fix",
         "eslint": "npx eslint . ",
         "eslint:fix": "npx eslint . --fix",
-        "prettier": "prettier .",
-        "prettier:fix": "prettier . --write",
+        "prettier": "npx prettier ./**/* --check",
+        "prettier:fix": "npx prettier . --write",
         "code:coverage": "npx vitest run --coverage",
         "test": "vitest",
         "test:coverage": "vitest run --coverage",
         "test:junit": "vitest --reporter=junit"
     },
     "devDependencies": {
-        "@eslint/js": "^9.12.0",
-        "@eslint/markdown": "^6.2.0",
-        "eslint": "^9.12.0",
+        "@eslint/js": "^9.13.0",
+        "@eslint/markdown": "^6.2.1",
+        "eslint": "^9.13.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.1",
-        "eslint-plugin-vue": "^9.29.0",
+        "eslint-plugin-vue": "^9.29.1",
         "globals": "^15.11.0",
-        "jsdoc": "^4.0.3",
-        "npm-run-all2": "^6.2.3",
+        "jsdoc": "^4.0.4",
+        "npm-run-all2": "^7.0.0",
         "prettier": "^3.3.3",
         "vitepress": "1.4.1"
     }

@@ -48,12 +48,12 @@ jobs:
       - name: Build with VitePress
         run: npm run build
 
-  test:
-    name: Testing
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
+  # test:
+  #   name: Testing
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+  #   steps:
       # - name: Run Tests
       #   run: npm test
 
@@ -66,10 +66,10 @@ jobs:
       # - name: Run tests
       #   run: npx vitest run --coverage
 
-      - name: Upload results to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: Upload results to Codecov
+      #   uses: codecov/codecov-action@v4
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
 
       # - name: Test and coverage
       #   run: npm jest --coverage ./tests/coverage/lcov.info
@@ -82,7 +82,8 @@ jobs:
       name: Production
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    # if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1

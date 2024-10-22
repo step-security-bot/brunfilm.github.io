@@ -3,7 +3,6 @@ name: CI Deploy
 on:
   push:
     branches: "main"
-
   pull_request:
     branches:
       - "main"
@@ -11,20 +10,17 @@ on:
 
 concurrency:
   group: GitHubPages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
   pages: write
   id-token: write
-  deployments: write
 
 jobs:
   build:
-    name: Building
+    name: "🚧 Building"
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
@@ -39,7 +35,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4.0.4
         with:
-          node-version: "22"
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -49,54 +45,43 @@ jobs:
         run: npm run build
 
   test:
-    name: Testing
+    name: "🧩 Testing"
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
-      # - name: Run Tests
-      #   run: npm test
+      - name: Run tests
+        run: npx vitest run --coverage
 
-      # - name: Run Tests
-      #   run: npm test:coverage
-
-      # - name: Run Tests
-      #   run: npm test:junit
-
-      # - name: Run tests
-      #   run: npx vitest run --coverage
-
-      - name: Upload results to Codecov
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      # - name: Test and coverage
-      #   run: npm jest --coverage ./tests/coverage/lcov.info
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: .vitepress/dist
 
   deploy:
-    name: Deploy to GitHub Pages
-    env:
-      ArtifactPath: .vitepress/dist
+    name: "🚀 Deploy to GitHub Pages"
     environment:
-      name: Production
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    permissions:
+      deployments: write
     runs-on: ubuntu-latest
-    if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
         with:
           egress-policy: audit
 
-      - name: Setup Pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
-        with:
-          path: $ArtifactPath
-
-      - name: Deploy to GitHub Pages
+      - name: "Deploy"
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

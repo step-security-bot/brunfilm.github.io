@@ -18,7 +18,7 @@ on:
     # The branches below must be a subset of the branches above
     branches: ["main"]
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 2 1 * *"
 
 permissions:
   contents: read
@@ -76,4 +76,3 @@ jobs:
       #   uses: github/codeql-action/analyze@c36620d31ac7c881962c3d9dd939c40ec9434f2b # v3.26.12
       #   with:
       #     category: "/language:${{matrix.language}}"
-

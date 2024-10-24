@@ -46,6 +46,7 @@ jobs:
 
   test:
     name: "🧩 Testing"
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner

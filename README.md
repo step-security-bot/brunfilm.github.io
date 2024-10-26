@@ -50,8 +50,8 @@ I have leveld up!
 
 New checks:
 
-- codecov/patch
-- codecov/project
+-   codecov/patch
+-   codecov/project
 
 Two new tokens to use.
 

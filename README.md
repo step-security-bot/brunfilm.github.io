@@ -46,9 +46,34 @@ Im trying to fix this.
 
 ### Codecov
 
+I have leveld up!
+
+New checks:
+
+- codecov/patch
+- codecov/project
+
+Two new tokens to use.
+
 #### Coverage Analytics
 
-I have set it all up. Codecov supports most .xml, .json, and .txt report formats. Token in repo secret.
+It works!
+
+##### YAML
+
+Nope
+
+##### Project coverage
+
+Nope
+
+##### Flags
+
+Nope
+
+##### Components
+
+Nope
 
 #### Bundle Analysis
 
@@ -58,9 +83,21 @@ Maybe its only when building local offline?
 
 Must make one more commit and push, then i can try building the app.
 
+##### Bundle reports
+
+Nope
+
 #### Test Analytics
 
 It looks like test analysis cannot read the same output as Coverage analysis. All should be set up, lets run.
+
+##### Failed tests
+
+Nope
+
+### security/snyk
+
+Looks like snyk is back, remember that i removed you.
 
 ## The end
 

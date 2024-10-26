@@ -3,44 +3,31 @@ import markdown from "@eslint/markdown";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import eslintPluginVue from "eslint-plugin-vue";
-import globals from "globals";
 
 export default [
     js.configs.recommended,
+    ...eslintPluginVue.configs["flat/recommended"],
     ...markdown.configs.recommended,
+    eslintPluginPrettierRecommended,
     {
         files: ["**/*.md"],
         plugins: {
             markdown,
         },
-        language: "markdown/gfm",
+        language: "markdown/commonmark",
     },
-    {
-        files: ["**/*.{js,mjs,cjs,vue}"],
-    },
-    {
-        languageOptions: {
-            globals: {
-                ...globals.browser,
-                ...globals.node,
-            },
-        },
-    },
-    eslintPluginPrettierRecommended,
-    ...eslintPluginVue.configs["flat/recommended"],
+    { files: ["**/*.{js,mjs,cjs}"] },
+    { ignores: ["node_modules"] },
     {
         files: ["*.vue", "**/*.vue"],
         parser: "vue-eslint-parser",
         parserOptions: {
-            parser: "espree",
+            vueFeatures: {
+                filter: false,
+                styleCSSVariableInjection: true,
+            },
             ecmaVersion: "latest",
             sourceType: "module",
-        },
-    },
-    {
-        rules: {
-            // override/add rules settings here, such as:
-            // 'vue/no-unused-vars': 'error'
         },
     },
     eslintConfigPrettier,

@@ -1,6 +1,7 @@
 ---
 layout: doc
 ---
+
 <script setup>
 import { data as movies} from './movies.data.js'
 </script>

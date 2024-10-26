@@ -1,3 +1,4 @@
+import { codecovVitePlugin } from "@codecov/vite-plugin";
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
@@ -28,13 +29,14 @@ export default defineConfig({
         externalLinkIcon: true,
     },
     vite: {
+        plugins: [
+            codecovVitePlugin({
+                enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+                bundleName: "BF Prod Bundle",
+                uploadToken: process.env.CODECOV_TOKEN,
+            }),
+        ],
         test: {
-            reporters: ["default", "junit", "html"],
-            outputFile: {
-                default: "/tests/default/",
-                junit: "/tests/junit/junit-report.xml",
-                html: "/tests/html/",
-            },
             coverage: {
                 provider: "v8", // or 'istanbul'
                 outputFile: "/tests/coverage/",

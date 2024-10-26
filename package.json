@@ -14,14 +14,15 @@
         "prettier": "npx prettier ./**/* --ignore-unknown --check",
         "prettier:fix": "npx prettier . --ignore-unknown --write",
         "preview": "vitepress preview",
-        "test": "run-s test:coverage:junit",
-        "test:coverage": "vitest run --coverage",
-        "test:coverage:junit": "vitest run --coverage --reporter=junit",
+        "test": "npx vitest run --",
+        "test:coverage": "npx vitest run --coverage",
+        "test:coverage:junit": "vitest run --coverage --reporter=junit --",
         "test:junit": "vitest --reporter=junit",
         "test:run": "vitest run",
         "test:ui": "npx vitest --ui --coverage.enabled=true"
     },
     "devDependencies": {
+        "@codecov/vite-plugin": "^1.2.1",
         "@eslint/js": "^9.13.0",
         "@eslint/markdown": "^6.2.1",
         "@vitest/coverage-v8": "^2.1.3",

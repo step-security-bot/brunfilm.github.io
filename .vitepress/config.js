@@ -1,9 +1,9 @@
+import { codecovVitePlugin } from "@codecov/vite-plugin";
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-    title: " ",
     lang: "sv-SE",
-    description: "En sida dedikerad till sagan om Brunfilm.",
+    description: "Sagan om Brunfilm.",
     srcDir: "./src",
     head: [["link", { rel: "icon", href: "/favicon.ico" }]],
     markdown: {
@@ -15,22 +15,32 @@ export default defineConfig({
         hostname: "https://www.brunfilm.com",
     },
     themeConfig: {
-        // siteTitle: "Brunfilm",
         logo: { light: "/logo-dark.svg", dark: "/logo-light.svg", alt: "Brunfilm logo" },
+        siteTitle: false,
         nav: [
             { text: "Hem", link: "/" },
             { text: "Historia", link: "/historia" },
             { text: "Filmer", link: "/filmer" },
             { text: "Om", link: "/om" },
         ],
-        sidebar: [
-            {
-                text: "Guide",
-                items: [
-                    { text: "Introduction", link: "/introduction" },
-                    { text: "Getting Started", link: "/getting-started" },
-                ],
-            },
+        footer: {
+            copyright: "Copyright © 2002-present Brunfilm",
+        },
+        externalLinkIcon: true,
+    },
+    vite: {
+        plugins: [
+            codecovVitePlugin({
+                enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+                bundleName: "bf_prod_bundle",
+                uploadToken: process.env.CODECOV_TOKEN,
+            }),
         ],
+        test: {
+            coverage: {
+                provider: "v8", // or 'istanbul'
+                outputFile: "/tests/coverage/",
+            },
+        },
     },
 });

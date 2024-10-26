@@ -32,7 +32,7 @@ export default defineConfig({
         plugins: [
             codecovVitePlugin({
                 enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
-                bundleName: "BF Prod Bundle",
+                bundleName: "bf_prod_bundle",
                 uploadToken: process.env.CODECOV_TOKEN,
             }),
         ],

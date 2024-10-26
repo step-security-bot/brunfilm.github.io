@@ -2,20 +2,22 @@ name: CI Deploy
 
 on:
   push:
-    branches: "main"
+    branches: main
   pull_request:
     branches:
-      - "main"
+      - main
   workflow_dispatch:
 
 concurrency:
-  group: GitHubPages
+  group: pages
   cancel-in-progress: false
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  pages: read
+
+env:
+  artifactPath: ./.vitepress/dist
 
 jobs:
   build:
@@ -35,8 +37,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4.0.4
         with:
-          node-version: 22
+          node-version: 20
           cache: npm
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Install dependencies
         run: npm ci
@@ -44,39 +49,29 @@ jobs:
       - name: Build with VitePress
         run: npm run build
 
-  test:
-    name: "🧩 Testing"
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
-        with:
-          egress-policy: audit
-
       - name: Run tests
-        run: npx vitest run --coverage
+        run: npm run test -- --coverage
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4.6.0
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: .vitepress/dist
-
-      - name: Upload test results to Codecov
-        if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@1b5b448b98e58ba90d1a1a1d9fcb72ca2263be46 # v1.0.0
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          path: ${{ env.artifactPath }}
 
   deploy:
     name: "🚀 Deploy to GitHub Pages"
     environment:
-      name: github-pages
+      name: Prod
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     permissions:

@@ -21,5 +21,12 @@
             "matchPackagePrefixes": ["metascraper"]
         }
     ],
+    "autoApprove": true,
+    "automerge": true,
+    "assigneesFromCodeOwners": true,
+    "major": {
+        "autoApprove": false,
+        "automerge": false
+    },
     "schedule": ["* 15 * * 1"]
 }

@@ -1,10 +1,10 @@
 ---
-title: Om
+title: Historia
 description: Sägnen om brunfilm
 icon: fas fa-circle-info
 ---
 
-![A mysterious northern collective known as Brunfilm](/brunfilm_created.jpg)
+![A mysterious northern collective known as Brunfilm](img/created.jpg)
 
 # Brunfilm: Ett Kollektivs Ursprung
 
@@ -14,7 +14,7 @@ Brunfilm, det mytomspunna kollektivet från norr, har en episk saga som sträcke
 
 Året var 1999, en tid då modemet tjöt sitt känslosamma klagosång och Y2K-buggen skrämde vettet ur hela världen. I denna tumultartade era samlades en grupp framsynta individer i Sundsvall, med en vision lika glödande som en överhettad Pentium-processor: att skapa en dataförening som skulle revolutionera IT-användandet i staden. De hyrde en lokal, och innan någon visste ordet av det, var platsen överflödad med datorer – ett digitalt mecka för de teknikintresserade.
 
-![Brunfilm's works as a kaleidoscope of absurd humor, unexpected twists, and a harmonious blend of high and low culture](/brunfilm_film_category.jpg)
+![Brunfilm's works as a kaleidoscope of absurd humor, unexpected twists, and a harmonious blend of high and low culture](img/film_category.jpg)
 
 ## Filmkonsten och Kulturkrockar
 
@@ -28,7 +28,7 @@ Men som med alla genialiska planer, tog saker en oväntad vändning. Den respekt
 
 Så när medelemmarna grundade en bullfikaförening så var det många som antog att det inte var rent mjöl i påsen. Bullfikaföreningen som fortfarande är aktiv idag skapar kanelbullar som får det att vattnas i munnen på de lokala sötsugna. I en avslöjande dokumentär som utkom några år senare framkom det att det var rent mjöl i påsen, men att det förekom en överanvändning av dunderjäst.
 
-![Evading the police](/lokalen.jpg)
+![Evading the police](img/lokalen.jpg)
 
 ## De Digitala Bohemernas Flytt
 

@@ -1,4 +1,5 @@
 import { codecovVitePlugin } from "@codecov/vite-plugin";
+import process from "node:process";
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
@@ -24,23 +25,30 @@ export default defineConfig({
             { text: "Om", link: "/om" },
         ],
         footer: {
-            copyright: "Copyright © 2002-present Brunfilm",
+            copyright: "Copyright © 1999-present Brunfilm",
         },
         externalLinkIcon: true,
+        editLink: {
+            pattern: "https://github.com/Brunfilm/brunfilm.github.io/blob/main/src/:path",
+            text: "Edit this page on GitHub",
+        },
     },
     vite: {
         plugins: [
             codecovVitePlugin({
                 enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
-                bundleName: "bf_prod_bundle",
+                bundleName: "bf-vite-bundle",
                 uploadToken: process.env.CODECOV_TOKEN,
+                gitService: "github",
             }),
         ],
         test: {
             coverage: {
+                reporter: ["text", "html", "clover", "json"],
                 provider: "v8", // or 'istanbul'
-                outputFile: "/tests/coverage/",
+                reportsDirectory: "/tests/unit/coverage",
             },
         },
     },
+    // }
 });

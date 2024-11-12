@@ -18,7 +18,7 @@
         {
             "description": "Group metascraper packages into a single PR.",
             "groupName": "metascraper",
-            "matchPackagePrefixes": ["metascraper"]
+            "matchPackageNames": ["metascraper{/,}**"]
         }
     ],
     "autoApprove": true,

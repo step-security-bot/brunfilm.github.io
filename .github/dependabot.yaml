@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: "weekly"
     labels:
-      - "dependency-updates"
+      - "dependencies"
     versioning-strategy: increase
 
   - package-ecosystem: github-actions

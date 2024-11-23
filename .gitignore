@@ -1,3 +1,10 @@
+.dccache
+cache
+coverage
+dist
+dist-ssr
+node_modules
+
 # Logs
 logs
 *.log
@@ -6,10 +13,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-cache
-node_modules
-dist
-dist-ssr
+
 *.local
 
 # Editor directories and files
@@ -22,7 +26,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-/coverage
-/.scannerwork
-/.dccache

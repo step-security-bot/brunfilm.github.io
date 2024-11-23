@@ -1,7 +1,6 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:recommended", ":approveMajorUpdates", ":semanticCommitScopeDisabled"],
-    "ignorePresets": [":semanticPrefixFixDepsChoreOthers"],
+    "extends": ["config:recommended", "schedule:weekly", "group:allNonMajor"],
     "labels": ["dependencies"],
     "minimumReleaseAge": "7 days",
     "packageRules": [
@@ -16,9 +15,8 @@
             "matchManagers": ["npm"]
         },
         {
-            "description": "Group metascraper packages into a single PR.",
-            "groupName": "metascraper",
-            "matchPackagePrefixes": ["metascraper"]
+            "matchDepTypes": ["peerDependencies"],
+            "enabled": false
         }
     ],
     "autoApprove": true,

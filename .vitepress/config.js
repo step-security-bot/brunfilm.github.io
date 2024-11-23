@@ -1,5 +1,3 @@
-import { codecovVitePlugin } from "@codecov/vite-plugin";
-import process from "node:process";
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
@@ -34,19 +32,10 @@ export default defineConfig({
         },
     },
     vite: {
-        plugins: [
-            codecovVitePlugin({
-                enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
-                bundleName: "bf-vite-bundle",
-                uploadToken: process.env.CODECOV_TOKEN,
-                gitService: "github",
-            }),
-        ],
+        plugins: [],
         test: {
             coverage: {
-                reporter: ["text", "html", "clover", "json"],
-                provider: "v8", // or 'istanbul'
-                reportsDirectory: "/tests/unit/coverage",
+                reporter: ["text", "clover", "json", "cobertura"],
             },
         },
     },

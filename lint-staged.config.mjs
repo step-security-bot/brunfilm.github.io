@@ -1,3 +1,4 @@
 export default {
-    "*.{js,mjs,cjs,vue}": "npm run eslint:fix && npm run prettier:fix",
+    "*.{js,mjs,cjs,vue,md}": "npm run eslint:fix",
+    "*.{js,mjs,cjs,vue}": "npm run prettier:fix",
 };

@@ -1,30 +1,4 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:recommended", "schedule:weekly", "group:allNonMajor"],
-    "labels": ["dependencies"],
-    "minimumReleaseAge": "7 days",
-    "packageRules": [
-        {
-            "addLabels": ["deps:actions"],
-            "description": "Use the deps:actions label for github-action manager updates (this means Renovate's github-action manager).",
-            "matchManagers": ["github-actions"]
-        },
-        {
-            "addLabels": ["deps:npm"],
-            "description": "Use the deps:npm label for npm manager packages (this means Renovate's npm manager).",
-            "matchManagers": ["npm"]
-        },
-        {
-            "matchDepTypes": ["peerDependencies"],
-            "enabled": false
-        }
-    ],
-    "autoApprove": true,
-    "automerge": true,
-    "assigneesFromCodeOwners": true,
-    "major": {
-        "autoApprove": false,
-        "automerge": false
-    },
-    "schedule": ["* 15 * * 1"]
+    "extends": ["github>Bogstag/renovate-config"]
 }

@@ -16,7 +16,7 @@
         "eslint:stats": "npx eslint --stats",
         "lint": "run-s eslint prettier",
         "lint:fix": "run-s eslint:fix prettier:fix",
-        "prepare": "husky",
+        "prepare": "",
         "prettier": "npx prettier ./**/* --ignore-unknown --check",
         "prettier:fix": "npx prettier . --ignore-unknown --write",
         "preview": "vitepress preview",

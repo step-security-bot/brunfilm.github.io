@@ -1,18 +1,15 @@
-# This workflow uses actions that are not certified by GitHub. They are provided
-# by a third-party and are governed by separate terms of service, privacy
-# policy, and support documentation.
-
-name: Scorecard supply-chain security
+name: Scorecard analysis workflow
 on:
+  push:
+    branches: 
+    - main
+  pull_request:
+    branches: 
+    - main
   # To guarantee Maintained check is occasionally updated. See
   # https://github.com/ossf/scorecard/blob/main/docs/checks.md#maintained
   schedule:
     - cron: "0 1 1 * *"
-  push:
-    branches: main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 # Declare default permissions as read only.
@@ -33,7 +30,7 @@ jobs:
 
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
         with:
           egress-policy: audit
 
@@ -62,8 +59,9 @@ jobs:
           #     of the value entered here.
           publish_results: true
 
-      # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF
-      # format to the repository Actions tab.
+      # Upload the results as artifacts (optional). Commenting out will disable
+      # uploads of run results in SARIF format to the repository Actions tab.
+      # https://docs.github.com/en/actions/advanced-guides/storing-workflow-data-as-artifacts
       - name: "Upload artifact"
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
@@ -74,6 +72,6 @@ jobs:
       # Upload the results to GitHub's code scanning dashboard (optional).
       # Commenting out will disable upload of results to your repo's Code Scanning dashboard
       - name: "Upload to code-scanning"
-        uses: github/codeql-action/upload-sarif@662472033e021d55d94146f66f6058822b0b39fd # v3.27.0
+        uses: github/codeql-action/upload-sarif@df409f7d9260372bd5f19e5b04e83cb3c43714ae # v3.27.9
         with:
           sarif_file: results.sarif

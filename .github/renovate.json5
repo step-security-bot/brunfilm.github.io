@@ -1,0 +1,8 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "github>Bogstag/renovate-config:default.json5",
+        "config:js-app",
+        "security:openssf-scorecard"
+    ]
+}

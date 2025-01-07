@@ -1,4 +1,4 @@
-# The readme, that nobody should read.
+# The readme, that nobody should read
 
 This is not useful information
 
@@ -21,7 +21,7 @@ Just writing something down so i dont forget something, i think.
 
 Source: .github/workflows/dependency-review.yml
 
-Source repository: https://github.com/actions/dependency-review-action
+Source repository: <https://github.com/actions/dependency-review-action>
 
 Does it really need to be in a separate wokflow? Its only one check in there.
 
@@ -50,8 +50,8 @@ I have leveld up!
 
 New checks:
 
--   codecov/patch
--   codecov/project
+- codecov/patch
+- codecov/project
 
 Two new tokens to use.
 

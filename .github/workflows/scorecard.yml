@@ -1,11 +1,11 @@
 name: Scorecard analysis workflow
 on:
   push:
-    branches: 
-    - main
+    branches:
+      - main
   pull_request:
-    branches: 
-    - main
+    branches:
+      - main
   # To guarantee Maintained check is occasionally updated. See
   # https://github.com/ossf/scorecard/blob/main/docs/checks.md#maintained
   schedule:

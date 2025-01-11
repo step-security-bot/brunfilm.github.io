@@ -2,38 +2,37 @@
 layout: doc
 ---
 
+# Våra filmiska skatter
+
+Här är en lista över våra banbrytande filmer:
+
 <script setup>
-import { data as movies} from './movies.data.js'
+import { data as movies } from './movies.data.ts'
+console.log(movies);
 </script>
 
-# Our Cinematic Treasures
-
-Here's a list of our groundbreaking (literally, we film in caves) movies:
-
-<div v-for="(movie, index) in movies" :key="index">
-    <h2>{{ movie.title }} ({{ movie.year }})</h2>
-    <p>{{ movie.description }}</p>
+<div v-for="movie of movies" class="movie-container">
+    <img :src="movie.url + '/' + movie.poster" :alt="movie.title + ' movie poster'" class="movie-poster" />
+    <div class="movie-details">
+        <a :href="movie.url">{{ movie.title }} ({{ movie.release }})</a>
+        <p>{{ movie.description }}</p>
+    </div>
 </div>
 
-<style module>
-.movie-list {
-  display: grid;
+<style>
+.movie-container {
+  display: flex;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-.movie-item {
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.movie-poster {
+  flex: 0 0 auto;
+  height: 150px;
+  width: auto;
 }
 
-.movie-item h2 {
-  margin-top: 0;
-  color: #333;
-}
-
-.movie-item p {
-  color: #666;
+.movie-details {
+  flex: 1;
 }
 </style>

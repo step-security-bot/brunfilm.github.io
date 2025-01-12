@@ -1,7 +1,8 @@
-import { defineConfig } from "vitepress";
+import { defineConfig, type DefaultTheme, type UserConfig } from "vitepress";
 
-export default defineConfig({
+const config: UserConfig<DefaultTheme.Config> = {
     lang: "sv-SE",
+    title: "Brunfilm",
     description: "Sagan om Brunfilm.",
     srcDir: "./src",
     head: [["link", { rel: "icon", href: "/favicon.ico" }]],
@@ -18,8 +19,8 @@ export default defineConfig({
         siteTitle: false,
         nav: [
             { text: "Hem", link: "/" },
-            { text: "Historia", link: "/historia" },
-            { text: "Filmer", link: "/filmer" },
+            { text: "Historia", link: "/historia/" },
+            { text: "Filmer", link: "/filmer/" },
             { text: "Om", link: "/om" },
         ],
         footer: {
@@ -33,11 +34,7 @@ export default defineConfig({
     },
     vite: {
         plugins: [],
-        test: {
-            coverage: {
-                reporter: ["text", "clover", "json", "cobertura"],
-            },
-        },
     },
-    // }
-});
+};
+
+export default defineConfig(config);

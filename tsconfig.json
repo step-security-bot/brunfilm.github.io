@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig.json",
+    "compilerOptions": {
+        "allowImportingTsExtensions": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "declaration": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "importsNotUsedAsValues": "remove",
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noUnusedLocals": true,
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "preserveConstEnums": true,
+        "removeComments": false,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "target": "ESNext",
+        "types": ["vite/client", "node"],
+        "verbatimModuleSyntax": true
+    },
+    "exclude": ["**/*.spec.ts", "**/node_modules/**", "**/dist/**", "**/cache/**", "coverage/", "tests/"],
+    "include": [
+        "**/*.d.ts",
+        "**/*.mjs",
+        "**/*.ts",
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "src/**/*.cjs",
+        "src/**/*.js",
+        "src/**/*.md",
+        "src/**/*.tsx",
+        ".vitepress/*.ts",
+        ".vitepress/**/*.ts",
+        ".vitepress/**/*.vue",
+        ".vitepress/**/*.cjs",
+        ".vitepress/**/*.js",
+        ".vitepress/**/*.md",
+        ".vitepress/**/*.tsx"
+    ],
+    "vueCompilerOptions": {
+        "vitePressExtensions": [".md"]
+    }
+}

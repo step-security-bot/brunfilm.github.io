@@ -1,15 +1,19 @@
 {
+    "$schema": "https://json.schemastore.org/package.json",
     "name": "brunfilm",
     "version": "0.0.1",
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vitepress build --mode production",
-        "build:dev": "vitepress build --mode development",
+        "prebuild": "vue-tsc --noEmit",
+        "build": "vitepress build --mode -- ",
+        "build:dev": "run-s build -- development",
+        "build:prod": "run-s build -- production",
+        "postbuild": "vue-tsc --declaration --emitDeclarationOnly",
         "dev": "vitepress dev --port=4000 --mode development",
-        "eslint": "npx eslint ",
+        "eslint": "npx eslint --config eslint.config.mjs",
         "eslint:conf": "npx eslint --print-config",
-        "eslint:conf:inspect": "npx @eslint/config-inspector@latest --config eslint.config.js",
+        "eslint:conf:inspect": "npx @eslint/config-inspector@latest --config eslint.config.mjs",
         "eslint:debug": "npx eslint --debug",
         "eslint:env": "npx eslint --env-info",
         "eslint:fix": "npx eslint --fix",
@@ -30,7 +34,8 @@
         "test:coverage:text": "npm run test:coverage -- --coverage.reporter=text",
         "test:junit": "vitest --reporter=junit",
         "test:run": "vitest run",
-        "test:ui": "npx vitest --ui --coverage.enabled"
+        "test:ui": "npx vitest --ui --coverage.enabled",
+        "tsc": "tsc"
     },
     "dependencies": {
         "vitepress": "^1.5"
@@ -39,17 +44,27 @@
         "@eslint/js": "^9.17",
         "@eslint/json": "^0.9",
         "@eslint/markdown": "^6.2",
+        "@types/node": "^22.10.5",
         "@vitest/coverage-v8": "^2.1",
         "@vitest/eslint-plugin": "^1.1",
-        "eslint-plugin-cypress": "^4.1",
+        "eslint": "^9.18.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-chai-friendly": "^1.0.1",
+        "eslint-plugin-cypress": "^4.1.0",
+        "eslint-plugin-markdownlint": "^0.6.0",
+        "eslint-plugin-mocha": "^10.5.0",
         "eslint-plugin-oxlint": "^0.15",
         "eslint-plugin-prettier": "^5.2",
-        "eslint-plugin-vue": "^9.32",
-        "globals": "^15.13",
+        "eslint-plugin-vue": "^9.32.0",
+        "globals": "^15.14.0",
         "iconify-icon": "^2.1",
         "jsdoc": "^4.0",
         "lint-staged": "^15.3",
-        "npm-run-all2": "^7.0"        
+        "npm-run-all2": "^7.0",
+        "prettier-plugin-vitepress": "^0.0.8",
+        "typescript": "^5.7.3",
+        "typescript-eslint": "^8.19.1",
+        "vue-tsc": "^2.2.0"
     },
     "peerDependencies": {
         "eslint": "^9.0.0"
